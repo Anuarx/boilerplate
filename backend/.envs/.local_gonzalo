@@ -1,0 +1,12 @@
+SECRET_KEY='django-insecureq123123iw234adszx523ni123123dag123123iuhuih3ui53bh513hj15jhlhbjh3b'
+DEBUG=True
+ALLOWED_HOSTS='127.0.0.1'
+DATABASES_HOST=127.0.0.1
+DATABASES_PORT=5432
+DATABASES_NAME=ruec
+DATABASES_USER=postgres
+DATABASES_PASS=postgres
+STATIC_URL='/ruec/backend/static/'
+MEDIA_URL='/ruec/backend/media/'
+REGPE_API_TOKEN=bfc49854dd0976dc7eed4634e7ea59203ac29ac7
+REGPE_API_URL='https://app-test.inase.uy/regpe/backend/api/v1/personasJuridica/'

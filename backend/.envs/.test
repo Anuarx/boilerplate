@@ -1,0 +1,16 @@
+SECRET_KEY='django-insecureq123123iw234adszx523ni123123dag123123iuhuih3ui53bh513hj15jhlhbjh3b'
+DEBUG=True
+ALLOWED_HOSTS='127.0.0.1','app-test.inase.uy'
+DATABASES_HOST=127.0.0.1
+DATABASES_PORT=5432
+DATABASES_NAME=ruec
+DATABASES_USER=usrruec
+DATABASES_PASS=Lgpq7ljaRkq3B8DqxIYh
+STATIC_URL='/ruec/backend/static/'
+MEDIA_URL='/ruec/backend/media/'
+CORS_ALLOW_HEADERS='*'
+CSRF_TRUSTED_ORIGINS=app-test.inase.uy
+REGPE_API_TOKEN=bfc49854dd0976dc7eed4634e7ea59203ac29ac7
+REGPE_API_URL='https://app-test.inase.uy/regpe/backend/api/v1/personasJuridica/'
+RGS_API_TOKEN=ac8c06d476dd6cf956ddf369e6d11a15fc003227
+RGS_API_URL='https://app.inase.uy/rpe/backend/api/v1/entidadesProductiva/'

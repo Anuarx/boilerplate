@@ -1,0 +1,11 @@
+SECRET_KEY='django-insecureq123123iw234adszx523ni123123dag123123iuhuih3ui53bh513hj15jhlhbjh3b'
+DEBUG=True
+ALLOWED_HOSTS='127.0.0.1'
+DATABASES_HOST=127.0.0.1
+
+# base de datos
+DATABASES_HOST=localhost
+DATABASES_NAME=trazabilidad_calvase
+DATABASES_PORT=5432
+DATABASES_USER=posrgres
+DATABASES_PASS=root
