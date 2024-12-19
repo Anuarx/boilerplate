@@ -1,6 +1,0 @@
-export * from "./base-table.interface"
-export * from "./custom-select.interface"
-export * from "./dialog.interface"
-export * from "./file-loader-dialog.interface"
-export * from "./input-select-options.interface"
-export * from "./menu-data.interface"

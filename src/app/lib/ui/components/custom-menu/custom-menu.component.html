@@ -1,8 +1,0 @@
-<ui-overlay-button [overlayButtonInput]="customMenuInput().overlayButtonInput">
-  <div class="container mat-elevation-z4" slot="iconButton" (mouseleave)="onClose()">
-    <div class="button">
-      <ui-icon-button [dataTestId]="'close-button'" icon="close" (onClick)="onClose()" />
-    </div>
-    <ng-content></ng-content>
-  </div>
-</ui-overlay-button>
