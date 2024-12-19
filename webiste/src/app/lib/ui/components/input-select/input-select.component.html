@@ -1,0 +1,16 @@
+<ui-input-label [required]="required" [label]="label" [color]="labelColor"></ui-input-label>
+<mat-form-field class="select" [ngClass]="max_width ? 'custom-width select' : 'full-width'" [appearance]="'outline'">
+  <mat-select [attr.data-testId]="dataTestId" [placeholder]="placeHolder" class="custom-input-heigth"
+    [ngClass]="getClass()" [formControl]="value" (selectionChange)="onChange($event)" [required]="required"
+    [multiple]="multiple">
+    <span *ngFor="let options of valueOptions">
+      <mat-option [attr.data-testId]="dataTestId" [value]="options.value">{{ options.label }}</mat-option>
+    </span>
+  </mat-select>
+  @if(hintMessage) {
+  <mat-hint><span [ngClass]="labelColor === 'gray' ? 'gray' : 'white'">{{hintMessage}}</span></mat-hint>
+  }
+  @if (value.invalid) {
+  <mat-error>Required field</mat-error>
+  }
+</mat-form-field>

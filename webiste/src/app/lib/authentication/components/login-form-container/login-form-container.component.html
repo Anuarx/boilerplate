@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="title">
+      <h2>Iniciar sesión</h2>
+    </div>
+    <app-login-form (onFormChange)="onFormChange($event)" (onFormStatusChange)="onFormStatusChange($event)"/>
+    <div class="forgot">
+      <p>Olvídaste tu contraseña? <a href="#">Recuperar contraseña</a></p>
+    </div>
+    <div class="actions">
+      <ui-button [full_width]="true"  [isLoading]="isLoading" (onClick)="onLogin()">
+        Iniciar sesión
+      </ui-button>
+    </div>
+  </div>
+  

@@ -1,0 +1,48 @@
+mat-dialog-content {
+  padding: 30px !important;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-align: center;
+
+  .main-message {
+    color: #0f191e;
+    text-align: center;
+    font-size: 14px;
+    // font-weight: 600;
+  }
+
+  .sub-message {
+    color: #3d5afe;
+    font-size: 18px;
+    font-weight: 500;
+  }
+}
+
+.actions {
+  width: 100%;
+  ui-button {
+    width: 100%;
+  }
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  padding: 0 !important;
+  span {
+    padding-left: 60px;
+    width: 100%;
+  }
+}
+
+img {
+  width: 10%;
+}
+
+h3 {
+  font-size: 18px;
+  color: #0f191e;
+  font-weight: 500;
+  margin-bottom: 5px;
+}

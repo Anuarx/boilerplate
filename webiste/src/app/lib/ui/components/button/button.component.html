@@ -1,0 +1,7 @@
+<button [attr.data-testId]="dataTestId" mat-flat-button [ngClass]="getClass()" [disabled]="disabled || isLoading"
+  [color]="'primary'" (click)="onEmit()" *ngIf="!isSessionExpired" [matTooltip]="tooltip">
+  <mat-spinner *ngIf="isLoading" [diameter]="20" [color]="spinnerColor"></mat-spinner>
+  <mat-icon *ngIf="icon && !isLoading">{{ icon }}</mat-icon>
+  <img *ngIf="svg && !isLoading" [src]="svg" alt="icon">
+  <span *ngIf="!isLoading"><ng-content></ng-content></span>
+</button>

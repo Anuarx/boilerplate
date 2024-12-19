@@ -1,0 +1,14 @@
+//Clases para la funcion render
+.grid-payroll-render {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  justify-content: center;
+  gap: 2px 0;
+}
+
+.flex-payroll-render {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}

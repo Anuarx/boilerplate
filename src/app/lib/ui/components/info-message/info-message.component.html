@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="message">
+    <div class="icon">
+      @if(infoMessageInput().icon) {
+      <mat-icon>
+        {{infoMessageInput().icon}}
+      </mat-icon>
+      }
+      @if(infoMessageInput().svg) {
+      <img [src]="infoMessageInput().svg" />
+      }
+    </div>
+    <p>{{infoMessageInput().message}}</p>
+  </div>
+  @if(infoMessageInput().onSubmit) {
+  <div class="action">
+    <ui-icon-button [dataTestId]="'download-button'" icon="download"
+      (onClick)="infoMessageInput()?.onSubmit()"></ui-icon-button>
+  </div>
+  }
+</div>

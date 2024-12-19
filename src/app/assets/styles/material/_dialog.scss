@@ -1,0 +1,28 @@
+@import "_mixin";
+@import "_palette";
+
+.mat-mdc-dialog-title {
+  @include font-family;
+  text-align: center;
+
+  color: white !important;
+  background: url("../../images/Banner\ Titles2.png") no-repeat;
+  font-size: 22px;
+  font-weight: 700;
+  padding-bottom: 5px;
+}
+
+.mat-mdc-dialog-content {
+  @include font-family;
+  font-size: 16px !important;
+  padding-top: 10px !important;
+}
+
+.mat-mdc-dialog-actions {
+  @include font-family;
+  background: url("../../images/Banner\ Titles2.png") no-repeat !important;
+}
+
+.mat-mdc-dialog-surface {
+  border-radius: 16px !important;
+}

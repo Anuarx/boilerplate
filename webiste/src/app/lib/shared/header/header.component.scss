@@ -1,0 +1,23 @@
+.header-toolbar {
+  background: linear-gradient(45deg, #4caf50, #8bc34a);
+  color: white;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+
+    .logo {
+      height: 65px;
+      margin-bottom: 10px;
+    }
+
+    .app-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+  }
+}

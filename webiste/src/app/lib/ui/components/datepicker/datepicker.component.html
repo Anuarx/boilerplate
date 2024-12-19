@@ -1,0 +1,36 @@
+<form [formGroup]="form">
+  <div class="datepicker-select">
+    <ui-input-label [color]="labelColor" [label]="startDateLabel" [required]="startDateRequired"></ui-input-label>
+    <mat-form-field class="datepicker" [ngClass]="max_width ? 'custom-width select' : 'full-width'"
+      [appearance]="'outline'">
+      <!-- <mat-label>{{ startDateLabel }}</mat-label> -->
+      <input [attr.data-testId]="dataTestId" matInput class="custom-input-heigth" [readonly]="true"
+        [formControl]="startDate" [placeholder]="startDayPlaceholder" [matDatepicker]="sdate"
+        [required]="startDateRequired" (dateInput)="onStartDateChange($event)"
+        [matDatepickerFilter]="filterDatepicker" />
+      <mat-datepicker-toggle matSuffix [for]="sdate"> </mat-datepicker-toggle>
+      <mat-datepicker #sdate></mat-datepicker>
+      @if(startDate.invalid) {
+      <mat-error>Required field</mat-error>
+      }
+    </mat-form-field>
+  </div>
+  <div class="datepicker-select" *ngIf="isRange">
+    <ui-input-label [color]="labelColor" [label]="endDateLabel" [required]="endDateRequired"></ui-input-label>
+    <mat-form-field *ngIf="isRange" class="datepicker" [ngClass]="max_width ? 'custom-width select' : 'full-width'"
+      [appearance]="'outline'">
+      <!-- <mat-label>{{ endDateLabel }}</mat-label> -->
+      <input [attr.data-testId]="dataTestId" matInput class="custom-input-heigth" [readonly]="true"
+        [formControl]="endDate" [placeholder]="endDayPlaceHolder" [matDatepicker]="edate"
+        (dateInput)="onEndDateChange($event)" [matDatepickerFilter]="filterDatepicker" />
+      <mat-datepicker-toggle matSuffix [for]="edate"></mat-datepicker-toggle>
+      <mat-datepicker #edate></mat-datepicker>
+      @if(startDate.invalid) {
+      <mat-error>Required field</mat-error>
+      }
+    </mat-form-field>
+  </div>
+</form>
+
+<!-- placeholder="{{ startDateLabel | translate }}" -->
+<!-- placeholder="{{ endDateLabel | translate }}" -->

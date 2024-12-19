@@ -1,0 +1,114 @@
+<div [ngClass]="tableStyleClass">
+  <mat-card>
+    <mat-card-title>
+      <div class="actions">
+        <ng-content #actions></ng-content>
+      </div>
+    </mat-card-title>
+    <mat-card-content>
+      <div class="table-responsive">
+        <table #table data-testid="table-grid" mat-table cdkDropListData="dataSource" cdkDropList
+          (cdkDropListDropped)="drop($event)" [dataSource]="baseTable.dataSource" class="table-responsive" matSort
+          (matSortChange)="sortData($event)">
+          <ng-container *ngFor="let c of baseTable.columns" [matColumnDef]="c.caption">
+            <ng-container *ngIf="c.caption === 'select'">
+              <th data-testid="checkbox-th" mat-header-cell *matHeaderCellDef>
+                <span class="checkbox">
+                  <mat-checkbox #allCheckbox (change)="$event ? toggleAllRows() : null"
+                    [checked]="selection.hasValue() && isAllSelected()" [aria-label]="checkboxLabel()">
+                  </mat-checkbox>
+                </span>
+              </th>
+              <td mat-cell *matCellDef="let element; let i = index">
+                <span class="checkbox">
+                  <mat-checkbox [attr.data-testid]="'checkbox-row-' + (i + 1) + '-td'"
+                    (change)="$event ? selection.toggle(element) : null"
+                    [disabled]="baseTable?.disableRowSelector(element) || false"
+                    [checked]="selection.isSelected(element)" [aria-label]="checkboxLabel(element)">
+                  </mat-checkbox>
+                </span>
+              </td>
+            </ng-container>
+            <ng-container *ngIf="c.caption != 'select'">
+              <th [attr.data-testid]="c.caption + '-th'" mat-header-cell *matHeaderCellDef
+                [mat-sort-header]="c.field.key">
+                {{ c.caption }}
+              </th>
+              <td [attr.data-testid]="c.caption + '-' + (i + 1) + '-td'" mat-cell
+                *matCellDef="let element; let i = index">
+                <ng-container
+                  *ngIf="!c.field.render && !c.field.button && !c.field.toggle && !c.field.selectAutocomplete">
+                  @if(c.field?.tooltip) {
+                  <span [matTooltip]="c.field?.tooltip(element) || ''">
+                    {{
+                    c.field.parseElement
+                    ? c.field.parseElement(element)
+                    : element[c.field.key]
+                    }}
+                  </span>
+                  } @else() {
+                  {{
+                  c.field.parseElement
+                  ? c.field.parseElement(element)
+                  : element[c.field.key]
+                  }}
+                  }
+                </ng-container>
+                <ng-container *ngIf="c.field.render">
+                  <div [innerHTML]="c.field.render(element)"></div>
+                </ng-container>
+                <ng-container *ngIf="c.field.button">
+                  <button mat-icon-button (click)="c.field.button.action(element)"
+                    [disabled]="c.field.button?.disabled(element)">
+                    <img [src]="c.field.button.svg(element)" *ngIf="c.field.button.svg">
+                    <mat-icon *ngIf="c.field.button.icon">{{ c.field.button.icon }}</mat-icon>
+                  </button>
+                </ng-container>
+                <ng-container *ngIf="c.field.toggle">
+                  <ui-toggle (onToggleChange)="c.field.toggle?.onClick(element)"
+                    [checked]="c.field.toggle.checked(element)" [disabled]="c.field.toggle.disabled(element)">
+                    {{ c.field.toggle.label }}
+                  </ui-toggle>
+                </ng-container>
+                <ng-container *ngIf="c.field.selectAutocomplete">
+                  <div class="autocomplete">
+                    <ui-select-autocomplete [required]="c.field.selectAutocomplete?.required(element) || false"
+                      (onSelectionChangeEvent)="c.field.selectAutocomplete?.onChange(element)"
+                      [hintMessage]="c.field.selectAutocomplete?.hintMessage(element) || ''"
+                      [dataTestId]="c.field.selectAutocomplete.dataTestId" [label]="c.field.selectAutocomplete.label"
+                      [labelColor]="'gray'" [default_value]="c.field.selectAutocomplete.default_value || ''"
+                      [placeHolder]="c.field.selectAutocomplete.placeHolder || ''"
+                      [value]="c.field.selectAutocomplete.control" [options]="c.field.selectAutocomplete.options" />
+                  </div>
+                </ng-container>
+              </td>
+            </ng-container>
+          </ng-container>
+          <ng-container matColumnDef="actions" *ngIf="showActions">
+            <th mat-header-cell *matHeaderCellDef>Actions</th>
+            <td mat-cell *matCellDef="let elemento">
+              <ui-menu [actions]="parseActions(elemento)"></ui-menu>
+            </td>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+          @if(baseTable.dragAndDrop) {
+          <tr mat-row *matRowDef="let row; columns: displayedColumns" cdkDrag [cdkDragData]="row"></tr>
+          } @else {
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+          }
+        </table>
+      </div>
+    </mat-card-content>
+    <div class="paginator" *ngIf="baseTable.paginateOptions">
+      <mat-paginator #paginator [length]="baseTable.paginateOptions.totalCount"
+        [pageSize]="baseTable.paginateOptions.pageSize"
+        [pageSizeOptions]="baseTable.paginateOptions.pageSizeOptions || [10]" (page)="onPageChangeEvent($event)"
+        showFirstLastButtons>
+      </mat-paginator>
+      <div class="column-config">
+        <ui-checkbox-list-menu data-test-id="setting-columns-table-button"
+          [checkboxListMenuInput]="checkboxListMenuInput" />
+      </div>
+    </div>
+  </mat-card>
+</div>

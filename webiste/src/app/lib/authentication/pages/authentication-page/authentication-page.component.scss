@@ -1,0 +1,24 @@
+@import "breakpoints";
+
+.container {
+  height: 100%;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+
+  mat-card {
+    background: linear-gradient(45deg, #4caf50, #8bc34a);  
+    color: white;  
+    padding: 16px;  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;  
+    width: 100%;  
+    max-width: 500px;  
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);  
+  }
+
+}
