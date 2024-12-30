@@ -1,21 +1,20 @@
 <div class="container">
   <div class="dashboard-template">
+    <div class="header" *ngIf="headerTitle">
+      <div class="title-container">
+        @if (this.backRoute) {
+          <ui-icon-button color="primary" [icon]="'arrow_back'" (onClick)="onBack()"></ui-icon-button>
+        }
+        <span class="header-title">{{ headerTitle }}</span>
+      </div>
+      <hr class="divider" />
+    </div>
     <div class="filters" *ngIf="filters">
       <mat-card>
         <div class="card-container">
-           <mat-card-title>
-            <div class="title">
-              <div class="icon">
-                <mat-icon>{{ icon }}</mat-icon>
-              </div>
-              <span class="dashboard-title"> {{ title }} </span>
-            </div>
-          </mat-card-title> 
           <mat-card-content>
+            <span class="filter-title">Filtros</span>
             <ng-content select="[slot=filters]"></ng-content>
-            <div class="actions" *ngIf="actions">
-              <ng-content #filter_actions></ng-content>
-            </div>
           </mat-card-content>
         </div>
         <!-- <mat-card-actions *ngIf="actions">

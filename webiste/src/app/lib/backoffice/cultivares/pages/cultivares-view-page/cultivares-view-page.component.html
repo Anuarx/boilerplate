@@ -1,8 +1,7 @@
-<app-page-template [title]="'Cultivares'"[filters]="true" >
+<app-page-template [headerTitle]="'Mis Cultivares'" [filters]="true" >
     <div slot="filters">
-      <p>Filtros de ejemplo</p>
+      <app-cultivares-filter></app-cultivares-filter>
     </div>
-  
     <div slot="content">
       <app-cultivares-view-container></app-cultivares-view-container>
     </div>

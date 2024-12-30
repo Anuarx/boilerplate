@@ -1,0 +1,16 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .form {
+    display: flex;
+    gap: 10px;
+  }
+
+  .actions {
+    display: flex;
+    gap: 10px;
+  }

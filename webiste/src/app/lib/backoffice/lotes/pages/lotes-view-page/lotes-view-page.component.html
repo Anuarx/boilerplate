@@ -1,0 +1,8 @@
+<app-page-template [headerTitle]="'Mis Lotes'" [backRoute]="'/cultivares'" [filters]="true" >
+    <div slot="filters">
+      <app-lotes-filter></app-lotes-filter>
+    </div>
+    <div slot="content">
+      <app-lotes-view-container></app-lotes-view-container>
+    </div>
+  </app-page-template>

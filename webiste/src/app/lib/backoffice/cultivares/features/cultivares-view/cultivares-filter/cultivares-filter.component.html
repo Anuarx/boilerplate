@@ -1,0 +1,12 @@
+<form [formGroup]="form" class="container">
+  <div class="form">
+    <ui-input-field label="Densidad de Siembra" [value]="firstName" [required]="true" [errorMessage]="'Ingrese Densidad de Siembra'" [placeHolder]="'Densidad de Siembra'" />
+    <ui-input-field label="Ciclo de Floración" [value]="lastName" [required]="true" [errorMessage]="'Ingrese Ciclo de Floración'" [placeHolder]="'Ciclo de Floración'" />
+    <ui-input-field label="Usos Sugeridos" [value]="lastName" [required]="true" [errorMessage]="'Ingrese Usos Sugeridos'" [placeHolder]="'Usos Sugeridos'" />
+  </div>
+
+  <div class="actions">
+    <ui-button [full_width]="true" [icon]="'search'">Filtrar</ui-button>
+    <ui-button [full_width]="true" [icon]="'delete'">Reiniciar</ui-button>
+  </div>
+</form>

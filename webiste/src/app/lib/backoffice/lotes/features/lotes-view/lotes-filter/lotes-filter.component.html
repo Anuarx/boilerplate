@@ -1,0 +1,13 @@
+<form [formGroup]="form" class="container">
+    <div class="form">
+      <ui-input-field label="Lote" [value]="firstName" [required]="true" [errorMessage]="'Ingrese Lote'" [placeHolder]="'Lote'" />
+      <ui-input-field label="Departamento" [value]="lastName" [required]="true" [errorMessage]="'Ingrese Departamento'" [placeHolder]="'Departamento'" />
+      <ui-input-field label="Pureza" [value]="lastName" [required]="true" [errorMessage]="'Ingrese Pureza'" [placeHolder]="'Pureza'" />
+    </div>
+  
+    <div class="actions">
+      <ui-button [full_width]="true" [icon]="'search'">Filtrar</ui-button>
+      <ui-button [full_width]="true" [icon]="'delete'">Reiniciar</ui-button>
+    </div>
+  </form>
+  

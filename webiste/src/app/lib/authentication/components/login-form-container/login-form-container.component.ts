@@ -62,6 +62,8 @@ export class LoginFormContainerComponent {
       return
     }
 
+    this.router.navigateByUrl('/cultivares');
+
      this.authenticationUseCase.loginState.dispatch(this.form)
   }
 }

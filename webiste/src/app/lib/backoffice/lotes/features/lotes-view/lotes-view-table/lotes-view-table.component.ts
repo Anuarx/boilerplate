@@ -1,27 +1,28 @@
 import { Component, effect, EventEmitter, input, Output } from '@angular/core';
+import { CultivaresViewTableInput } from '../../../../cultivares';
+import { Cultivar } from '../../../../cultivares/interfaces/cultivares.interfaces';
 import { BaseTableComponent, DialogService, IBaseTable } from '../../../../../ui';
-import { CommonModule } from '@angular/common';
-import { CultivaresViewTableInput, cultivarViewTableColumns } from './cultivares-view-table.interface';
-import { Cultivar } from '../../../interfaces/cultivares.interfaces';
 import { PageEvent } from '@angular/material/paginator';
-import { Router } from '@angular/router';
+import { LoteesViewTableInput, lotesViewTableColumns } from './lotes-view-table.interface';
+import { CommonModule } from '@angular/common';
+import { Lote } from '../../../interfaces/lote.interface';
 
 @Component({
-  selector: 'app-cultivares-view-table',
-  imports: [BaseTableComponent, CommonModule],
-  templateUrl: './cultivares-view-table.component.html',
-  styleUrl: './cultivares-view-table.component.scss'
+  selector: 'app-lotes-view-table',
+  imports: [CommonModule, BaseTableComponent],
+  templateUrl: './lotes-view-table.component.html',
+  styleUrl: './lotes-view-table.component.scss'
 })
-export class CultivaresViewTableComponent {
-  cultivaresViewTableComponent = input.required<CultivaresViewTableInput>();
+export class LotesViewTableComponent {
+cultivaresViewTableComponent = input.required<LoteesViewTableInput>();
 
   @Output() onDeleteCultivarEvent: EventEmitter<Cultivar> = new EventEmitter<Cultivar>();
 
   @Output() onPageChangeEvent: EventEmitter<PageEvent> = new EventEmitter<PageEvent>();
 
-  baseTableInput: IBaseTable<Cultivar> = {
+  baseTableInput: IBaseTable<Lote> = {
     dataSource: [],
-    columns: cultivarViewTableColumns,
+    columns: lotesViewTableColumns,
     paginateOptions: {
       page: 0,
       pageSize: 10,
@@ -30,12 +31,12 @@ export class CultivaresViewTableComponent {
     },
     actions: [
       {
-        name: 'Ver lotes',
-        icon: 'create_new_folder',
-        action: (cultivar: Cultivar) => {
-          this.router.navigateByUrl('/lotes')
+        name: 'Ver QR',
+        icon: 'link',
+        action: (cultivar: Lote) => {
+         
         },
-        hide: (cultivar: Cultivar) => false,
+        hide: (cultivar: Lote) => false,
       },
     ]
   }
@@ -43,7 +44,7 @@ export class CultivaresViewTableComponent {
  cultivarViewTableComponentEffect = effect(() => {
     this.baseTableInput = {
       ...this.baseTableInput,
-      dataSource: this.cultivaresViewTableComponent().cultivares,
+      dataSource: this.cultivaresViewTableComponent().lotes,
       paginateOptions: {
         ...this.baseTableInput.paginateOptions,
         totalCount: this.cultivaresViewTableComponent().totalCount
@@ -53,7 +54,6 @@ export class CultivaresViewTableComponent {
 
   constructor(
     private dynamicDialogService: DialogService,
-    private router: Router
   ) { }
 
   onPageChange($event: PageEvent): void {
